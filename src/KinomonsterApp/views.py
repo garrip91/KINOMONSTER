@@ -18,40 +18,34 @@ from django.views.generic.edit import FormView
 from django.contrib import auth
 from django.contrib import messages  # импортировал новый модуль messages
 from django.contrib.auth.models import User
-#
-#
+
 from django.contrib.auth import authenticate, login, logout
-#
-#
+
 from django.shortcuts import redirect
-#
-#
+
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
-#
-#
+
 from django import forms
-#
-#
+
 from django.core.exceptions import ValidationError
-#
-#
+
 # from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormMixin
-#
-#
+
 from django.urls import reverse
-#
-#
+
 from .mixins import MyFormMixin
-#
-#
+
 from django.views.generic.edit import FormView
-#
-#
+
 from django.core.mail import send_mail
-#
-#
+
 from django.contrib.messages.views import SuccessMessageMixin
+
+from rest_framework.views import APIView
+from .serializers import FilmListSerializer
+from rest_framework.response import Response
+
 
 
 # Create your views here:
@@ -330,3 +324,13 @@ class SendMessageView(MyFormMixin, SuccessMessageMixin, FormView):
         print(F'request.path == {self.request.path}')
         return context
 ################################################################
+
+
+class FilmListView(APIView):
+    """Вывод списка фильмов"""
+
+    def get(self, request):
+        #films = Film.objects.filter(draft=False)
+        films = Film.objects.all()
+        serializer = FilmListSerializer(films, many=True)
+        return Response(serializer.data)

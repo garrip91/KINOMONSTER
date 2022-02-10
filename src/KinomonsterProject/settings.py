@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'KinomonsterApp',
     'ckeditor',
     'ckeditor_uploader',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

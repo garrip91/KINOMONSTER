@@ -2,6 +2,22 @@ from django.contrib import admin
 
 from KinomonsterApp.models import Film, Series, FilmComments, SeriesComments, SendMessage
 
+#from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django import forms
+
+
+
+class FilmAdminForm(forms.ModelForm):
+
+    #content = forms.CharField(widget=CKEditorWidget())
+    description = forms.CharField(widget=CKEditorUploadingWidget())
+    
+    class Meta:
+        model = Film
+        fields = '__all__'
+
+
 
 class FilmCommentsAdmin(admin.ModelAdmin):
     # class Meta:
@@ -33,7 +49,12 @@ class SeriesCommentsAdmin(admin.ModelAdmin):
 
 
 # Register your models here:
-admin.site.register(Film)
+class FilmAdmin(admin.ModelAdmin):
+    form = FilmAdminForm
+    
+admin.site.register(Film, FilmAdmin)
+
+
 admin.site.register(Series)
 admin.site.register(FilmComments, FilmCommentsAdmin)
 admin.site.register(SeriesComments, SeriesCommentsAdmin)

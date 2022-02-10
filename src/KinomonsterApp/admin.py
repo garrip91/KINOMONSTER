@@ -11,7 +11,7 @@ from django import forms
 class FilmAdminForm(forms.ModelForm):
 
     #content = forms.CharField(widget=CKEditorWidget())
-    description = forms.CharField(widget=CKEditorUploadingWidget())
+    description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
     
     class Meta:
         model = Film

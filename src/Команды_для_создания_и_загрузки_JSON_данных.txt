@@ -1,0 +1,12 @@
+python manage.py dumpdata --indent 4 KinomonsterApp > __.__.____.json
+|
+python manage.py dumpdata --indent 4 auth > USERS.json
+
+
+python manage.py loaddata ######.json
+
+
+
+Для загрузки дампа всей БД в СУБД "PostgreSQL"
+|
+python manage.py dumpdata --natural-foreign --natural-primary --indent 4 > __.__.____.json

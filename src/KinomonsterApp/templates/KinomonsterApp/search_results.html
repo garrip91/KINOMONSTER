@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Фильмы
+{% endblock %}
+	
+           
+{% block content %}
+    
+	<h1>Поиск фильмов и сериалов</h1>	
+	{% if request.GET.q == '' %}
+	    <h2>Что мы можем показать Вам с таким: "{{ request.GET.q }}" поисковым запросом???</h2>
+	{% else %}
+        {% if object_list %}
+	        <h2>Результат Вашего поискового запроса "{{ request.GET.q }}"</h2>
+	        {% for object in object_list %}
+                <div class="well clearfix">
+			        <a href="{% url 'film_detail_url' object.pk %}">
+                        <div class="col-lg-3 col-md-2 text-center">
+							<img class="img-thumbnail" src="{{ object.logo.url }}" alt="{{ object.title }}">
+                            <p>{{ object.title }}</p>					
+                        </div>
+                        <div class="col-lg-9 col-md-10">
+                            <p>
+                                {{ object.description }}
+                            </p>
+                        </div>
+		                <div class="col-lg-12">
+					        <div class="btn btn-lg btn-warning pull-right">
+						        подробнее
+					        </div>
+                        </div>
+			        </a>
+                </div>            
+            {% endfor %}
+	    {% else %}
+            <p>По Вашему запросу фильма(-ов) не найдено!</p>
+	    {% endif %}
+	    {% if series %}
+	        {% for s in series %}
+                <div class="well clearfix">
+			        <a href="{% url 'series_detail_url' s.pk %}">
+                        <div class="col-lg-3 col-md-2 text-center">
+                            <img class="img-thumbnail" src="{{ s.logo.url }}" alt="{{ s.title }}">
+                            <p>{{ s.title }}</p>
+                        </div>
+                        <div class="col-lg-9 col-md-10">
+                            <p>
+                                {{ s.description }}
+                            </p>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="btn btn-lg btn-warning pull-right">
+						        подробнее
+						    </div>
+                        </div>
+				    </a>
+                </div>
+			{% endfor %}
+			<!--	</div>	-->
+	    {% else %}
+            <p>По Вашему запросу сериала(-ов) не найдено!</p>
+	    {% endif %}
+    <div class="margin-8"></div>
+	{% endif %}
+    	
+{% endblock %}

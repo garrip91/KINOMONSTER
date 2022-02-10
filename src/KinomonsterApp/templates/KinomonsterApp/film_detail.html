@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+	
+           
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <hr>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="{{ object.youtube_trailer_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="well info-block text-center">
+        Год: <span class="badge">{{ object.year }}</span>
+        Рейтинг: <span class="badge">{{ object.rating }}</span>
+        Режиссер: <span class="badge">{{ object.producer }}</span>
+    </div>
+    <div class="margin-8"></div>
+    <h2>Описание фильма {{ object.title }}</h2>
+    <hr>
+    <div class="well">
+        {{ object.description }}
+    </div>
+    <div class="margin-8"></div>
+    <h2>Отзывы о фильме {{ object.title }}</h2>
+    <hr>
+	
+	{% if request.user.is_authenticated %}
+		<!-- добавил форму отправки данных на сервер -->
+		<form action="" method="POST"> {% csrf_token %}
+		    <div class="form-group">
+			    {{ user }}
+			</div>
+			<div class="form-group">
+			    {{ form.title }}
+			</div>
+			<div class="form-group">
+			    {{ form.comment }}
+			</div>
+            <button type="submit" class="btn btn-lg btn-warning pull-right">Отправить</button>
+        </form>
+	    <div class="margin-8 clear"></div>
+	{% endif %}
+    
+	{% for c in comments %}
+		{% if object.pk == c.film_id %}
+	        <div class="panel panel-info">     	
+		        <div class="panel-heading">
+			        <span>***[[ <i>{{ c.author }}</i> ]]***</span>
+                </div>
+                <div class="panel-body">
+				    <p><b>{{ c.title }}</b></p>
+                    {{ c.comment|safe }}
+                </div>						
+            </div>
+	    {% endif %}
+	{% endfor %}
+	
+{% endblock %}

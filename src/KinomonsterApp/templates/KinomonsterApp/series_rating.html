@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Рейтинг сериалов
+{% endblock %}
+	
+           
+{% block content %}
+    <h2>Рейтинг сериалов</h2>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Сериал</th>
+                <th class="text-center">Год</th>
+                <th class="text-center">рейтинг</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in series %}
+			    <tr>
+                    <td class="col-lg-1 col-md-1 col-xs-2">
+                        <img class="img-responsive img-thumbnail" src="../../../media/{{ s.logo }}" alt="{{ s.title }}">
+                    </td>
+                    <td class="vert-align"><a href="{% url 'series_detail_url' s.pk %}">{{ s.title }}</a></td>
+                    <td class="text-center vert-align">{{ s.year }}</td>
+                    <td class="text-center vert-align"><span class="badge">{{ s.rating }}</span></td>
+                </tr>
+		    {% endfor %}
+        </tbody>
+    </table>
+    <div class="margin-8"></div>                        
+{% endblock %}
+<!--================================================================-->

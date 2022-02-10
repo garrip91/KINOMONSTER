@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Страница поиска{% endblock %}
+
+{% block content %}
+  {% if search_query %}
+    <h1>Запрос, содержащий "{{ search_query }}"</h1>
+    {#	<h3>	#}
+      {#	{% with results.count as total_results %}	#}
+	{#	Found {{ total_results }} result{{ total_results|pluralize }}	#}
+      {#	{% endwith %}	#}
+    {#	</h3>	#}
+    {% for f in films_list_obj %}
+      <h4><a href="{% url 'film_detail_url' f.pk %}">{{ f.title }}</a></h4>
+    {% empty %}
+      <p>По Вашему запросу ничего не найдено!</p>
+    {% endfor %}
+	{% for s in series_list_obj %}
+      <h4><a href="{% url 'series_detail_url' s.pk %}">{{ s.title }}</a></h4>
+	{% empty %}
+      <p>По Вашему запросу ничего не найдено!</p>
+    {% endfor %}
+    <p><a href="{% url 'all_search' %}">Искать снова</a></p>
+  {% else %}
+    <h1>Поиск фильмов и сериалов</h1>
+    <form action="." method="POST"> {% csrf_token %}
+	  {{ form.as_p }}
+      <p><button type="submit" value="Search">Кнопка</button><p>
+    </form>
+  {% endif %}
+{% endblock %}

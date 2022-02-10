@@ -153,6 +153,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
 EMAIL_BACKEND = Yandex_config.EMAIL_BACKEND
 EMAIL_HOST = Yandex_config.EMAIL_HOST
 EMAIL_PORT = Yandex_config.EMAIL_PORT

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from KinomonsterApp.views import HomePageView, FilmsTemplateView, FilmDetailView, SeriesTemplateView, SeriesDetailView, FilmsRatingTemplateView, SeriesRatingTemplateView, ContactsTemplateView, SearchResultsView, SendMessageView, FilmListView
+from KinomonsterApp.views import HomePageView, FilmsTemplateView, FilmDetailView, SeriesTemplateView, SeriesDetailView, FilmsRatingTemplateView, SeriesRatingTemplateView, ContactsTemplateView, SearchResultsView, SendMessageView, FilmListView, FilmCommentsCreateView
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -36,6 +36,7 @@ urlpatterns = [
     path('contacts/', SendMessageView.as_view(), name='contacts'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('films_api/', FilmListView.as_view(), name='films_api'),
+    path('film_comments_api/', FilmCommentsCreateView.as_view(), name='film_comments_api'),
 ]
 
 if settings.DEBUG:

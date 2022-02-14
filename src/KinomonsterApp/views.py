@@ -43,7 +43,7 @@ from django.core.mail import send_mail
 from django.contrib.messages.views import SuccessMessageMixin
 
 from rest_framework.views import APIView
-from .serializers import FilmListSerializer
+from .serializers import FilmListSerializer, FilmCommentsCreateSerializer
 from rest_framework.response import Response
 
 
@@ -334,3 +334,13 @@ class FilmListView(APIView):
         films = Film.objects.all()
         serializer = FilmListSerializer(films, many=True)
         return Response(serializer.data)
+        
+        
+class FilmCommentsCreateView(APIView):
+    """Добавление комментария к фильму"""
+    
+    def post(self, request):
+        film_comments = FilmCommentsCreateSerializer(data=request.data)
+        if film_comments.is_valid():
+            film_comments.save()
+        return Response(status=201)

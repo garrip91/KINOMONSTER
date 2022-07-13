@@ -1,6 +1,6 @@
-python manage.py dumpdata --indent 4 KinomonsterApp > __.__.____.json
+python -Xutf8 manage.py dumpdata --indent 4 KinomonsterApp > __.__.____.json
 |
-python manage.py dumpdata --indent 4 auth > USERS.json
+python -Xutf8 manage.py dumpdata --indent 4 auth > USERS.json
 
 
 python manage.py loaddata ######.json
@@ -10,3 +10,4 @@ python manage.py loaddata ######.json
 Для загрузки дампа всей БД в СУБД "PostgreSQL"
 |
 python manage.py dumpdata --natural-foreign --natural-primary --indent 4 > __.__.____.json
+(это тоже можно попробовать с "-Xutf8" между "python" и "manage.py")

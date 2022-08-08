@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
-from . import Yandex_config
-from .SECRET_KEY import KEY
+import os
+import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,12 +23,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    EMAIL_PORT=(int, 0),
+    EMAIL_USE_TLS=(bool, False),
+    EMAIL_USE_SSL=(bool, False)
+)
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = KEY
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 #ALLOWED_HOSTS = ['*']
@@ -157,12 +166,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-EMAIL_BACKEND = Yandex_config.EMAIL_BACKEND
-EMAIL_HOST = Yandex_config.EMAIL_HOST
-EMAIL_PORT = Yandex_config.EMAIL_PORT
-EMAIL_HOST_USER = Yandex_config.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = Yandex_config.EMAIL_HOST_PASSWORD
-EMAIL_USE_TLS = Yandex_config.EMAIL_USE_TLS
-EMAIL_USE_SSL = Yandex_config.EMAIL_USE_SSL
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL')
 
 # SECURE_SSL_REDIRECT = True

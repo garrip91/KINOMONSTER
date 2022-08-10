@@ -41,7 +41,7 @@
 
 ## Built With
 
-Сайт создан с помощью Python, Django
+Веб-проект создан с помощью Python, Django
 
 ## Getting Started
 

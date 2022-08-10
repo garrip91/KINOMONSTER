@@ -13,7 +13,7 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/Garrip91/Claims_Test?color=dark-green) ![Issues](https://img.shields.io/github/issues/Garrip91/Claims_Test) 
+![Contributors](https://img.shields.io/github/contributors/Garrip91/KINOMONSTER?color=dark-green) ![Issues](https://img.shields.io/github/issues/Garrip91/KINOMONSTER) 
 
 ## Table Of Contents
 

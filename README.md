@@ -62,7 +62,7 @@ https://www.python.org/
 1. Clone the repo
 
 ```sh
-git clone https://github.com/garrip91/Claims_Test
+git clone https://github.com/garrip91/KINOMONSTER
 ```
 
 

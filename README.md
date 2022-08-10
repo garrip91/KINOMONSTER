@@ -118,5 +118,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/Garrip91/KIN
 ## Acknowledgements
 
 * [Garrip91](https://github.com/garrip91)
-* [Claim project](https://github.com/garrip91/KINOMONSTER)
+* [KINOMONSTER](https://github.com/garrip91/KINOMONSTER)
 * [Python](https://www.python.org/)

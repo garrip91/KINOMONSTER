@@ -109,7 +109,7 @@ python manage.py runserver
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/Garrip91/Claims_Test/blob/main/LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/Garrip91/KINOMONSTER/blob/main/LICENSE.md) for more information.
 
 ## Authors
 

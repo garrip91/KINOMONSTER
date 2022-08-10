@@ -4,10 +4,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Сайт "КИНОМОНСТР"</h3>
+  <h3 align="center">Сайт "КиноМонстр"</h3>
 
   <p align="center">
-    Readme сайта "КИНОМОНСТР"
+    Readme сайта "КиноМонстр"
     <br/>
     <br/>
   </p>
